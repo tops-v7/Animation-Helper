@@ -1,8 +1,8 @@
-# Animation Helper: technical analysis and implementation plan
+# PF2E Scene Animation Manager: technical analysis and implementation plan
 
 Analysis performed on October 18, 2026. **Approach 1, opening AA's existing editor, is feasible without a fork.** AA exposes global configuration data and registers item editor controls. An inline editor would depend more heavily on private schemas and migration behavior, so it is deferred.
 
-The displayed module name is **Animation Helper**. The technical ID `pf2e-scene-animation-manager` is retained for compatibility with existing installations, settings, and API consumers.
+The displayed module name is **PF2E Scene Animation Manager**. The technical ID `pf2e-scene-animation-manager` is retained for compatibility with existing installations, settings, and API consumers.
 
 ## Versions investigated
 
@@ -24,14 +24,14 @@ PF2e's GitHub `latest` endpoint pointed to an SF2e release during the analysis, 
 - `isEnabled: false`, or the historical `killAnim`, disables an item. `isCustomized: true` selects an individual override; the mere presence of flags does not indicate an override.
 - `menu` identifies categories such as `range`, `melee`, `templatefx`, or `preset`. Category-specific structures include `primary.video`, `primary.sound`, and other fields.
 - Global Autorec uses separate world settings: `aaAutorec-melee`, `-range`, `-ontoken`, `-templatefx`, `-aura`, `-preset`, and `-aefx`. `aaAutorec` contains metadata/version information. `disableAutoRec` is a separate switch.
-- The public `window.AutomatedAnimations.AutorecManager` class exposes `getAutorecEntries()`, plus merge, overwrite, and export operations. Animation Helper uses only its read-only getter.
+- The public `window.AutomatedAnimations.AutorecManager` class exposes `getAutorecEntries()`, plus merge, overwrite, and export operations. PF2E Scene Animation Manager uses only its read-only getter.
 - The actual `handleItem()` resolver in `src/system-handlers/findAnimation.js` is **not exposed as a public API**. It runs flag migrations that may call `item.update()`, so the passive overview does not import or call it.
 
 References: [Resolver](https://github.com/theripper93/autoanimations/blob/58f9db81db0ea81f317333e44135b820a34a2a1a/src/system-handlers/findAnimation.js), [matching rules](https://github.com/theripper93/autoanimations/blob/58f9db81db0ea81f317333e44135b820a34a2a1a/src/aa-classes/aaAutorecFunctions.js), [flag migrations](https://github.com/theripper93/autoanimations/blob/58f9db81db0ea81f317333e44135b820a34a2a1a/src/mergeScripts/items/itemFlagMerge.js), [AutorecManager](https://github.com/theripper93/autoanimations/blob/58f9db81db0ea81f317333e44135b820a34a2a1a/src/formApps/_AutorecMenu/components/category/menuManager/AAAutorecManager.js).
 
 The isolated adapter reproduces individual override precedence, case-sensitive exact labels before partial matches, whitespace removal and lowercasing for partial matches, longest-label ordering, `advanced.excludedTerms`, weapon base type/group fallback, variant base-name fallback, and template category restrictions. Active-effect Autorec is excluded from regular item searches. Context-specific ammunition, external `overrideNames`, roll conditions, and hit conditions are outside this static overview.
 
-Older flags are not migrated by Animation Helper. **Unknown** prevents a potentially valid older configuration from being reported as missing. A match demonstrates an assignment, not working asset playback.
+Older flags are not migrated by PF2E Scene Animation Manager. **Unknown** prevents a potentially valid older configuration from being reported as missing. A match demonstrates an assignment, not working asset playback.
 
 ### Opening the original editor
 
@@ -67,9 +67,9 @@ Foundry 14 ApplicationV2 lifecycle methods and the scene-controls object format 
 
 All four issue pages were reviewed. They describe playback or persistence limitations, not additional write APIs:
 
-- [#74: variants](https://github.com/theripper93/autoanimations/issues/74): the editor may modify the base spell instead of an individual variant. Animation Helper explicitly labels this behavior and passes the base spell.
+- [#74: variants](https://github.com/theripper93/autoanimations/issues/74): the editor may modify the base spell instead of an individual variant. PF2E Scene Animation Manager explicitly labels this behavior and passes the base spell.
 - [#84: Dailies/staves](https://github.com/theripper93/autoanimations/issues/84): an accessible spell or matching assignment does not guarantee that AA receives the correct chat/origin context when casting. Temporary spells are read-only; use Autorec for configuration.
-- [#82: regions](https://github.com/theripper93/autoanimations/issues/82): persistent animations may survive region deletion. Animation Helper creates or deletes neither animations nor regions.
+- [#82: regions](https://github.com/theripper93/autoanimations/issues/82): persistent animations may survive region deletion. PF2E Scene Animation Manager creates or deletes neither animations nor regions.
 - [#85: Sequencer](https://github.com/theripper93/autoanimations/issues/85): source/secondary effects and Foundry levels/elevation. The thread reports a correction in AA 7.1.8; no playback reproduction was performed here.
 
 ## First-version implementation plan and status

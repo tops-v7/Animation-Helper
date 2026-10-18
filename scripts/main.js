@@ -7,7 +7,7 @@ export function openManager() {
   return manager.render({force: true});
 }
 Hooks.once("init", () => {
-  game.keybindings.register(ID, "open", {name: "Open Animation Helper", restricted: true, editable: [],
+  game.keybindings.register(ID, "open", {name: "Open PF2E Scene Animation Manager", restricted: true, editable: [],
     onDown: () => { openManager(); return true; }});
 });
 Hooks.once("ready", () => {
@@ -15,6 +15,6 @@ Hooks.once("ready", () => {
 });
 Hooks.on("getSceneControlButtons", controls => {
   if (!game.user.isGM || game.system.id !== "pf2e" || !controls.tokens?.tools) return;
-  controls.tokens.tools[ID] = {name: ID, title: "Animation Helper", icon: "fa-solid fa-wand-magic-sparkles",
+  controls.tokens.tools[ID] = {name: ID, title: "PF2E Scene Animation Manager", icon: "fa-solid fa-wand-magic-sparkles",
     order: Object.keys(controls.tokens.tools).length, button: true, visible: true, onChange: openManager};
 });

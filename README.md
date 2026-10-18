@@ -1,6 +1,6 @@
-# Animation Helper
+# PF2E Scene Animation Manager
 
-An installable **0.1.2 prototype** for Foundry VTT 14 and Pathfinder Second Edition. Animation Helper gives the GM a central overview of Automated Animations assignments for the current canvas scene. It uses AA's existing configuration and editor without maintaining a separate assignment database or rendering animations itself.
+An installable **0.1.3 prototype** for Foundry VTT 14 and Pathfinder Second Edition. PF2E Scene Animation Manager gives the GM a central overview of Automated Animations assignments for the current canvas scene. It uses AA's existing configuration and editor without maintaining a separate assignment database or rendering animations itself.
 
 ## Installation
 
@@ -10,14 +10,14 @@ In Foundry, open **Add-on Modules → Install Module → Manifest URL** and ente
 https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/module.json
 ```
 
-The manifest downloads the versioned GitHub source archive for tag `v0.1.2`. No JavaScript build or `node_modules` installation is required in Foundry.
+The manifest downloads the versioned GitHub source archive for tag `v0.1.3`. No JavaScript build or `node_modules` installation is required in Foundry.
 
 For manual installation:
 
-1. Build the ZIP with `npm run build`: `dist/pf2e-scene-animation-manager-0.1.2.zip`.
+1. Build the ZIP with `npm run build`: `dist/pf2e-scene-animation-manager-0.1.3.zip`.
 2. Extract it into your Foundry user data directory, under `Data/modules/`. The manifest must be at `Data/modules/pf2e-scene-animation-manager/module.json`.
-3. Restart Foundry. In a separate PF2e test world, enable Automated Animations, its dependencies (Sequencer and socketlib), and **Animation Helper**. Install suitable JB2A assets for playback.
-4. Open a scene as GM and click the wand button labeled **Animation Helper** in the token tools.
+3. Restart Foundry. In a separate PF2e test world, enable Automated Animations, its dependencies (Sequencer and socketlib), and **PF2E Scene Animation Manager**. Install suitable JB2A assets for playback.
+4. Open a scene as GM and click the wand button labeled **PF2E Scene Animation Manager** in the token tools.
 
 You can also open the window from the console or a script macro:
 
@@ -25,7 +25,9 @@ You can also open the window from the console or a script macro:
 game.modules.get("pf2e-scene-animation-manager").api.open();
 ```
 
-A configurable keyboard shortcut is available in Foundry's settings. The technical module ID remains `pf2e-scene-animation-manager` so existing installations, settings, and API calls remain compatible. The displayed name is **Animation Helper**.
+A configurable keyboard shortcut is available in Foundry's settings. The technical module ID remains `pf2e-scene-animation-manager` so existing installations, settings, and API calls remain compatible. The displayed name is **PF2E Scene Animation Manager**.
+
+The GitHub repository remains `tops-v7/Animation-Helper`; repository links and the manifest URL retain that address.
 
 For future releases, update the manifest version and download tag together. The manifest URL remains unchanged.
 
@@ -40,11 +42,11 @@ For future releases, update the manifest version and download tag together. The 
 | socketlib | Required by AA; install and enable it with AA | Listed in AA's own required dependencies |
 | JB2A assets | Optional for management; needed when the selected AA animations use JB2A assets | Free edition 0.9.4 declares verified Foundry 14; no Patreon edition was independently inspected |
 
-The minimum AA version is now 7.1.8, matching the inspected integration baseline. Versions 7.0.0–7.1.7 are no longer declared supported. Sequencer is not assigned an invented minimum version: Animation Helper delegates playback to AA and does not call Sequencer APIs directly.
+The minimum AA version is now 7.1.8, matching the inspected integration baseline. Versions 7.0.0–7.1.7 are no longer declared supported. Sequencer is not assigned an invented minimum version: PF2E Scene Animation Manager delegates playback to AA and does not call Sequencer APIs directly.
 
-JB2A Free and Patreon are alternative asset sources; you do not need both editions for Animation Helper. The free module ID `JB2A_DnD5e` does not make Animation Helper a D&D5e module: Animation Helper supports **PF2e only**. It does not bundle, download, or license JB2A assets.
+JB2A Free and Patreon are alternative asset sources; you do not need both editions for PF2E Scene Animation Manager. The free module ID `JB2A_DnD5e` does not make PF2E Scene Animation Manager a D&D5e module: PF2E Scene Animation Manager supports **PF2e only**. It does not bundle, download, or license JB2A assets.
 
-**Not yet validated in a running Foundry 14 test world.** The cloud environment contains no licensed Foundry runtime or campaign data. The declared compatibility range and source-level checks are not a runtime verification, so `verified` is intentionally unset. A verified badge on AA, Sequencer, or JB2A does not verify Animation Helper. Source analysis, automated data/adapter tests, and DOM interaction tests have been completed. Follow the manual [test plan](docs/TESTING.md) before using the module in a campaign.
+**Not yet validated in a running Foundry 14 test world.** The cloud environment contains no licensed Foundry runtime or campaign data. The declared compatibility range and source-level checks are not a runtime verification, so `verified` is intentionally unset. A verified badge on AA, Sequencer, or JB2A does not verify PF2E Scene Animation Manager. Source analysis, automated data/adapter tests, and DOM interaction tests have been completed. Follow the manual [test plan](docs/TESTING.md) before using the module in a campaign.
 
 ## Features and usage
 
@@ -74,7 +76,7 @@ The overview does not write actor, token, item, or AA data and does not run AA m
 
 - Variant editing deliberately opens the base spell. Independent variant overrides are not supported (AA issue #74).
 - Temporary, generated, and consumable-embedded spells are readable, but cannot be edited directly without a proven safe persistence path. Use Autorec instead. Abilities supplied by other modules appear only when exposed as items, strike items, or accessible spellcasting collections.
-- Dailies/staff spells may fail to trigger AA despite having an assignment (issue #84). Animation Helper does not modify playback hooks.
+- Dailies/staff spells may fail to trigger AA despite having an assignment (issue #84). PF2E Scene Animation Manager does not modify playback hooks.
 - Region lifecycles and Sequencer elevation are unchanged (issues #82/#85).
 - Older AA flags are shown as **Unknown**. Open the AA editor to review or migrate them. Invalid global data is not reported as a missing assignment.
 - Non-English ability names still require matching Autorec entries. The manager follows AA's naming rules and does not translate campaign content.
@@ -101,7 +103,7 @@ git clone --depth 1 --branch 7.1.8 https://github.com/theripper93/autoanimations
 node tools/verify-aa.mjs /tmp/aa-reference
 ```
 
-This comparison runs AA's original resolver and header registration in a controlled Node context, with migrations and editor rendering substituted. The original editor callback receives the unchanged item document. Building AA is not required to package Animation Helper.
+This comparison runs AA's original resolver and header registration in a controlled Node context, with migrations and editor rendering substituted. The original editor callback receives the unchanged item document. Building AA is not required to package PF2E Scene Animation Manager.
 
 See the [technical report and implementation plan](docs/TECHNICAL-ANALYSIS.md) for architecture and source references. Changes to AA editor controls or resolution rules belong in `scripts/aa-adapter.js`. Inline editing, batch operations, and independent variant persistence are future extensions.
 
@@ -109,18 +111,18 @@ See the [technical report and implementation plan](docs/TECHNICAL-ANALYSIS.md) f
 
 In Foundry Setup, check **Add-on Modules** for updates. The manifest URL and module ID stay the same across versions. After updating, reload the world/client so the new scripts and description are loaded. See the [changelog](CHANGELOG.md) for changes and compatibility adjustments.
 
-Disabling or uninstalling Animation Helper does not remove AA assignments. Those configurations remain in AA's world settings and item flags. Keep AA installed if you still use its configurations or playback.
+Disabling or uninstalling PF2E Scene Animation Manager does not remove AA assignments. Those configurations remain in AA's world settings and item flags. Keep AA installed if you still use its configurations or playback.
 
 ## Troubleshooting and support
 
-- **The tool button is missing:** log in as GM, open a PF2e scene, enable Animation Helper and its dependencies, then check the token tools. You can also try the API macro above.
+- **The tool button is missing:** log in as GM, open a PF2e scene, enable PF2E Scene Animation Manager and its dependencies, then check the token tools. You can also try the API macro above.
 - **A dependency is missing:** use Foundry's dependency installation prompts where available. Enable AA, Sequencer, and AA's socketlib dependency in the world.
 - **Foundry shows an unverified compatibility warning:** the module declares a supported range, but actual Foundry acceptance testing has not yet been recorded. This is separate from an incompatible-version error.
-- **An ability is Unknown:** review its AA flags in AA's own editor. Animation Helper deliberately avoids migrating data during a scan.
+- **An ability is Unknown:** review its AA flags in AA's own editor. PF2E Scene Animation Manager deliberately avoids migrating data during a scan.
 - **An assigned animation does not play:** check the corresponding AA configuration, available assets, and AA/Sequencer logs. A matching assignment does not test playback.
 
-Report problems in [GitHub Issues](https://github.com/tops-v7/Animation-Helper/issues). Include Animation Helper, Foundry (including build), PF2e, AA, Sequencer, and relevant asset/module versions; linked or unlinked token status; the item type; reproduction steps; expected/actual behavior; and relevant console errors. Remove private campaign details and credentials before sharing logs. This is the project's support channel; no separate Discord or donation channel is provided.
+Report problems in [GitHub Issues](https://github.com/tops-v7/Animation-Helper/issues). Include PF2E Scene Animation Manager, Foundry (including build), PF2e, AA, Sequencer, and relevant asset/module versions; linked or unlinked token status; the item type; reproduction steps; expected/actual behavior; and relevant console errors. Remove private campaign details and credentials before sharing logs. This is the project's support channel; no separate Discord or donation channel is provided.
 
 ## License and acknowledgments
 
-Animation Helper is distributed under the [MIT License](LICENSE). Automated Animations, Sequencer, socketlib, PF2e, and JB2A are separate projects with their own licenses. Their code and assets are not bundled here. See the [metadata comparison](docs/PACKAGE-METADATA.md) for upstream references and remaining presentation work.
+PF2E Scene Animation Manager is distributed under the [MIT License](LICENSE). Automated Animations, Sequencer, socketlib, PF2e, and JB2A are separate projects with their own licenses. Their code and assets are not bundled here. See the [metadata comparison](docs/PACKAGE-METADATA.md) for upstream references and remaining presentation work.

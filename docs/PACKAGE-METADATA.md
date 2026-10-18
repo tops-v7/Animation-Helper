@@ -1,6 +1,6 @@
 # Package metadata and compatibility review
 
-Reviewed on October 18, 2026 for Animation Helper 0.1.2. All descriptions and project documentation remain in English.
+Reviewed on October 18, 2026 for PF2E Scene Animation Manager 0.1.3. All descriptions and project documentation remain in English.
 
 ## Upstream packages inspected
 
@@ -27,11 +27,11 @@ The manifests above were fetched directly. Foundry's public module-development a
 
 ## Intentionally omitted or still pending
 
-- **Animation Helper runtime verification:** upstream `verified` values describe those packages only. Our own value remains unset until a Foundry test is confirmed. See [the acceptance plan](TESTING.md).
+- **PF2E Scene Animation Manager runtime verification:** upstream `verified` values describe those packages only. Our own value remains unset until a Foundry test is confirmed. See [the acceptance plan](TESTING.md).
 - **Real screenshots or demo video:** no actual Foundry capture is available. A setup cover or UI screenshot could be added to `media` after capture in a test world. Upstream banners/assets are not reused as our product images.
 - **Additional translations:** the module currently provides English text directly. No `languages` entries are declared without actual translation resources.
 - **Donation, personal contact, or Discord links:** none have been provided for this project, so none are invented or copied from upstream projects.
 - **Public Foundry package listing:** a working GitHub manifest enables URL installation but does not register the module in Foundry's package directory. Directory listing is a separate publication step.
-- **Bundled AA/JB2A content:** Animation Helper ships neither third-party module code nor animation assets; their licenses and distribution remain separate.
+- **Bundled AA/JB2A content:** PF2E Scene Animation Manager ships neither third-party module code nor animation assets; their licenses and distribution remain separate.
 
-The display name remains **Animation Helper**, while the stable ID `pf2e-scene-animation-manager` and manifest URL preserve update compatibility.
+The display name remains **PF2E Scene Animation Manager**, while the stable ID `pf2e-scene-animation-manager` and manifest URL preserve update compatibility.

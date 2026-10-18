@@ -8,7 +8,7 @@ const watchHooks = ["canvasReady", "canvasTearDown", "createToken", "updateToken
 export class SceneAnimationManager extends foundry.applications.api.ApplicationV2 {
   static DEFAULT_OPTIONS = {
     id: "pf2e-scene-animation-manager", tag: "section", classes: ["pf2e-sam"],
-    position: {width: 1000, height: 740}, window: {title: "Animation Helper", resizable: true}
+    position: {width: 1000, height: 740}, window: {title: "PF2E Scene Animation Manager", resizable: true}
   };
   constructor(options = {}) {
     super(options);

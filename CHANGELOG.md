@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.3 — October 18, 2026
+
+- Use **PF2E Scene Animation Manager** consistently in the module list, client description, window title, token tool, keyboard shortcut, contributor labels, and documentation.
+- Align the development package name with the stable module ID `pf2e-scene-animation-manager`.
+- Preserve the module ID, API, repository address, and manifest URL so existing installations continue to update.
+- Normalize HTML link quoting in the client description.
+
 ## 0.1.2 — October 18, 2026
 
 - Expand the Foundry client description with features, access rules, requirements, and key limitations.
@@ -9,11 +16,11 @@
 - Add README, issue tracker, changelog, license, and project links to package metadata.
 - Document the compatibility matrix, socketlib's role, optional JB2A assets, update/removal steps, and troubleshooting.
 - Include this changelog in the installable ZIP.
-- Keep Animation Helper's own Foundry runtime verification pending; upstream compatibility badges are not treated as evidence of our runtime compatibility.
+- Keep PF2E Scene Animation Manager's own Foundry runtime verification pending; upstream compatibility badges are not treated as evidence of our runtime compatibility.
 
 ## 0.1.1 — October 18, 2026
 
-- Rename the displayed module to Animation Helper.
+- Update the displayed module branding.
 - Translate the interface, notifications, README, technical report, and test plan into English.
 - Retain the technical module ID and manifest URL for existing installations.
 

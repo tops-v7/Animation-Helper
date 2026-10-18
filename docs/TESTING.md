@@ -1,4 +1,4 @@
-# Testing Animation Helper
+# Testing PF2E Scene Animation Manager
 
 ## Automated checks
 
@@ -18,11 +18,11 @@
 
 Use a separate test world and back it up first. Record installed versions and test results. Do not use a production campaign for the first acceptance run.
 
-1. Enable PF2e 8.6.1, AA 7.1.8, Sequencer 4.3.0, socketlib, and available JB2A assets. Check the browser console for errors. The module list, window title, token tool, and keyboard shortcut must use **Animation Helper**.
+1. Enable PF2e 8.6.1, AA 7.1.8, Sequencer 4.3.0, socketlib, and available JB2A assets. Check the browser console for errors. The module list, window title, token tool, and keyboard shortcut must use **PF2E Scene Animation Manager**.
 2. Open a scene with a PC, two linked tokens for that PC, two unlinked goblins, an NPC with `melee` attacks, and a token without an actor. Expect one grouped PC with a count, separate unlinked goblins, and a missing-actor notice.
 3. Add prepared, spontaneous, and focus spells; a reaction; a free action; and active/passive feats. Check spellcasting sources and categories. Passive feats must not appear.
 4. Assign a spell through Autorec only. It must show **Autorec** and disappear from the **Missing animations** filter. Check exact/partial matches, excluded terms, and localized weapon group names.
-5. Open the AA editor from Animation Helper and save an override on the actual item. The status must change to **Item override** without reopening the manager. Disabling it must show **Disabled**. Other actors/items must receive no new flags.
+5. Open the AA editor from PF2E Scene Animation Manager and save an override on the actual item. The status must change to **Item override** without reopening the manager. Disabling it must show **Disabled**. Other actors/items must receive no new flags.
 6. Repeat for exactly one unlinked goblin. The other goblin and the world actor must remain unchanged.
 7. Open global Autorec, change an entry, and save. Counts and status must refresh. Disable global Autorec; an item override must still count as an override.
 8. Add spell variants and check separate rows and base-name fallbacks. The editor button must explicitly say **base spell** and open that spell. Do not expect independent variant editing.
