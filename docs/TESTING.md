@@ -14,7 +14,11 @@
 
 `npm run build` checks manifest file references, produces a reproducible ZIP, and verifies its CRC and bundled manifest.
 
-## Manual Foundry 14 acceptance test — pending
+## Reported runtime result
+
+Tops reported that the module works successfully in Foundry during the intended Foundry 14 workflow. The exact Foundry build, PF2e version, and AA version have not been supplied. Version 0.1.4 records `verified: "14"` on that basis, without claiming a specific build or complete acceptance coverage. This report is separate from the cloud checks above.
+
+## Full manual Foundry 14 acceptance test — pending
 
 Use a separate test world and back it up first. Record installed versions and test results. Do not use a production campaign for the first acceptance run.
 

@@ -1,6 +1,6 @@
 # Package metadata and compatibility review
 
-Reviewed on October 18, 2026 for PF2E Scene Animation Manager 0.1.3. All descriptions and project documentation remain in English.
+Reviewed on October 18, 2026 for PF2E Scene Animation Manager 0.1.4. All descriptions and project documentation remain in English.
 
 ## Upstream packages inspected
 
@@ -24,10 +24,11 @@ The manifests above were fetched directly. Foundry's public module-development a
 - Explain required configuration dependencies versus optional playback assets, including JB2A Free/Patreon alternatives.
 - Add update/removal guidance, troubleshooting, and a useful issue-report checklist.
 - Add a changelog and include it in the generated ZIP.
+- Record Foundry 14 verification based on the successful user report, and identify the author as Tops.
 
 ## Intentionally omitted or still pending
 
-- **PF2E Scene Animation Manager runtime verification:** upstream `verified` values describe those packages only. Our own value remains unset until a Foundry test is confirmed. See [the acceptance plan](TESTING.md).
+- **Detailed runtime coverage:** `verified: "14"` now records the user-reported successful Foundry test. Exact build and PF2e/AA versions have not been supplied. Upstream verification badges remain separate evidence; the full [acceptance plan](TESTING.md) is still pending.
 - **Real screenshots or demo video:** no actual Foundry capture is available. A setup cover or UI screenshot could be added to `media` after capture in a test world. Upstream banners/assets are not reused as our product images.
 - **Additional translations:** the module currently provides English text directly. No `languages` entries are declared without actual translation resources.
 - **Donation, personal contact, or Discord links:** none have been provided for this project, so none are invented or copied from upstream projects.

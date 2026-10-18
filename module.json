@@ -1,16 +1,17 @@
 {
   "id": "pf2e-scene-animation-manager",
   "title": "PF2E Scene Animation Manager",
-  "description": "<p><strong>PF2E Scene Animation Manager</strong> gives GMs a central, scene-based overview of Automated Animations configuration for Pathfinder Second Edition.</p><ul><li>Browse PC and NPC spells, attacks, actions, and active feats.</li><li>Search and filter item overrides, global Autorec matches, disabled entries, and missing animations.</li><li>Open AA's existing item editor or global Autorec menu directly.</li><li>Group linked actors while keeping unlinked token actors separate.</li></ul><p><strong>Compatibility:</strong> Foundry VTT 14 (build 361 or later), PF2e 8.6.1+, and Automated Animations 7.1.8–7.x. Sequencer is required; AA also requires socketlib. JB2A Free or Patreon assets are optional for management and needed only when the selected animations use them.</p><p>GM-only, English interface. No animation renderer, live preview, or separate assignment database. Variant editing opens the base spell; temporary spells are read-only. Foundry runtime acceptance is still pending.</p><p><a href=\"https://github.com/tops-v7/Animation-Helper#readme\">Setup and usage</a> · <a href=\"https://github.com/tops-v7/Animation-Helper/issues\">Report an issue</a> · <a href=\"https://github.com/tops-v7/Animation-Helper/blob/main/CHANGELOG.md\">Changelog</a></p>",
-  "version": "0.1.3",
+  "description": "<p><strong>PF2E Scene Animation Manager</strong> gives GMs a central, scene-based overview of Automated Animations configuration for Pathfinder Second Edition.</p><ul><li>Browse PC and NPC spells, attacks, actions, and active feats.</li><li>Search and filter item overrides, global Autorec matches, disabled entries, and missing animations.</li><li>Open AA's existing item editor or global Autorec menu directly.</li><li>Group linked actors while keeping unlinked token actors separate.</li></ul><p><strong>Compatibility:</strong> Foundry VTT 14 (build 361 or later), PF2e 8.6.1+, and Automated Animations 7.1.8–7.x. Sequencer is required; AA also requires socketlib. JB2A Free or Patreon assets are optional for management and needed only when the selected animations use them.</p><p>GM-only, English interface. No animation renderer, live preview, or separate assignment database. Variant editing opens the base spell; temporary spells are read-only. User-reported working in Foundry 14; detailed acceptance testing remains pending.</p><p><a href=\"https://github.com/tops-v7/Animation-Helper#readme\">Setup and usage</a> · <a href=\"https://github.com/tops-v7/Animation-Helper/issues\">Report an issue</a> · <a href=\"https://github.com/tops-v7/Animation-Helper/blob/main/CHANGELOG.md\">Changelog</a></p>",
+  "version": "0.1.4",
   "authors": [
     {
-      "name": "PF2E Scene Animation Manager contributors",
+      "name": "Tops",
       "url": "https://github.com/tops-v7/Animation-Helper"
     }
   ],
   "compatibility": {
     "minimum": "14.361",
+    "verified": "14",
     "maximum": "14"
   },
   "relationships": {
@@ -52,7 +53,7 @@
   ],
   "url": "https://github.com/tops-v7/Animation-Helper",
   "manifest": "https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/module.json",
-  "download": "https://github.com/tops-v7/Animation-Helper/archive/refs/tags/v0.1.3.zip",
+  "download": "https://github.com/tops-v7/Animation-Helper/archive/refs/tags/v0.1.4.zip",
   "readme": "https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/README.md",
   "bugs": "https://github.com/tops-v7/Animation-Helper/issues",
   "changelog": "https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/CHANGELOG.md",

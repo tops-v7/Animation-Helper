@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.4 — October 18, 2026
+
+- Set the module author to **Tops** in the manifest, package metadata, README, and license attribution.
+- Add `compatibility.verified: "14"` to resolve the unknown-compatibility label for the target Foundry generation, based on the successful user-reported test.
+- Keep the Foundry minimum at 14.361 and maximum at 14; do not claim an unreported exact build or dependency combination.
+- Update runtime-validation notes and compatibility troubleshooting. The full acceptance checklist remains pending.
+
 ## 0.1.3 — October 18, 2026
 
 - Use **PF2E Scene Animation Manager** consistently in the module list, client description, window title, token tool, keyboard shortcut, contributor labels, and documentation.

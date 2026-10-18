@@ -1,6 +1,8 @@
 # PF2E Scene Animation Manager
 
-An installable **0.1.3 prototype** for Foundry VTT 14 and Pathfinder Second Edition. PF2E Scene Animation Manager gives the GM a central overview of Automated Animations assignments for the current canvas scene. It uses AA's existing configuration and editor without maintaining a separate assignment database or rendering animations itself.
+**Author: Tops**
+
+An installable **0.1.4 prototype** for Foundry VTT 14 and Pathfinder Second Edition. PF2E Scene Animation Manager gives the GM a central overview of Automated Animations assignments for the current canvas scene. It uses AA's existing configuration and editor without maintaining a separate assignment database or rendering animations itself.
 
 ## Installation
 
@@ -10,11 +12,11 @@ In Foundry, open **Add-on Modules → Install Module → Manifest URL** and ente
 https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/module.json
 ```
 
-The manifest downloads the versioned GitHub source archive for tag `v0.1.3`. No JavaScript build or `node_modules` installation is required in Foundry.
+The manifest downloads the versioned GitHub source archive for tag `v0.1.4`. No JavaScript build or `node_modules` installation is required in Foundry.
 
 For manual installation:
 
-1. Build the ZIP with `npm run build`: `dist/pf2e-scene-animation-manager-0.1.3.zip`.
+1. Build the ZIP with `npm run build`: `dist/pf2e-scene-animation-manager-0.1.4.zip`.
 2. Extract it into your Foundry user data directory, under `Data/modules/`. The manifest must be at `Data/modules/pf2e-scene-animation-manager/module.json`.
 3. Restart Foundry. In a separate PF2e test world, enable Automated Animations, its dependencies (Sequencer and socketlib), and **PF2E Scene Animation Manager**. Install suitable JB2A assets for playback.
 4. Open a scene as GM and click the wand button labeled **PF2E Scene Animation Manager** in the token tools.
@@ -46,7 +48,7 @@ The minimum AA version is now 7.1.8, matching the inspected integration baseline
 
 JB2A Free and Patreon are alternative asset sources; you do not need both editions for PF2E Scene Animation Manager. The free module ID `JB2A_DnD5e` does not make PF2E Scene Animation Manager a D&D5e module: PF2E Scene Animation Manager supports **PF2e only**. It does not bundle, download, or license JB2A assets.
 
-**Not yet validated in a running Foundry 14 test world.** The cloud environment contains no licensed Foundry runtime or campaign data. The declared compatibility range and source-level checks are not a runtime verification, so `verified` is intentionally unset. A verified badge on AA, Sequencer, or JB2A does not verify PF2E Scene Animation Manager. Source analysis, automated data/adapter tests, and DOM interaction tests have been completed. Follow the manual [test plan](docs/TESTING.md) before using the module in a campaign.
+**Foundry 14 compatibility is marked verified based on a successful user-reported test.** The exact Foundry build and PF2e/AA versions were not supplied, so no specific build or dependency combination is claimed as runtime-tested. The cloud environment has no licensed Foundry runtime; its checks cover source analysis, automated data/adapter tests, DOM interaction, and packaging. The full manual [acceptance plan](docs/TESTING.md) remains open for detailed coverage.
 
 ## Features and usage
 
@@ -117,7 +119,7 @@ Disabling or uninstalling PF2E Scene Animation Manager does not remove AA assign
 
 - **The tool button is missing:** log in as GM, open a PF2e scene, enable PF2E Scene Animation Manager and its dependencies, then check the token tools. You can also try the API macro above.
 - **A dependency is missing:** use Foundry's dependency installation prompts where available. Enable AA, Sequencer, and AA's socketlib dependency in the world.
-- **Foundry shows an unverified compatibility warning:** the module declares a supported range, but actual Foundry acceptance testing has not yet been recorded. This is separate from an incompatible-version error.
+- **Foundry shows “Compatibility Unknown”:** update to version 0.1.4 or later in Foundry Setup, then reload the world/client. The manifest now declares `verified: "14"` based on the reported successful test. If the label remains, confirm the installed module version and check its local `module.json` for that field. Compatibility with a different Foundry major version is not declared.
 - **An ability is Unknown:** review its AA flags in AA's own editor. PF2E Scene Animation Manager deliberately avoids migrating data during a scan.
 - **An assigned animation does not play:** check the corresponding AA configuration, available assets, and AA/Sequencer logs. A matching assignment does not test playback.
 

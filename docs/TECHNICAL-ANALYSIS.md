@@ -79,7 +79,7 @@ All four issue pages were reviewed. They describe playback or persistence limita
 3. **GM interface:** ApplicationV2 with scene summary, grouped actor selection, search/status/category filters, details, and AA buttons. No direct data mutation. **Implemented in `scripts/manager.js`, with entry points in `scripts/main.js`.**
 4. **Refresh:** batch document, canvas, and setting hooks; remove listeners when closing; recheck current scene membership and item identity before opening the editor. **Implemented.**
 5. **Validation and packaging:** automated projection/adapter/DOM tests, comparisons against AA's actual resolver, and a clean ZIP. **Validated in the cloud.**
-6. **Foundry acceptance:** test installation, the actual Svelte editor, synthetic item updates, and multi-client refresh in a separate licensed test world. **Pending**; see `TESTING.md`. Production readiness and full V14 verification depend on this acceptance test.
+6. **Foundry acceptance:** successful use has been reported by the user, and version 0.1.4 marks Foundry 14 verified on that basis. Exact runtime versions have not been recorded. The full acceptance checklist, including synthetic item updates and multi-client refresh, remains **pending**; see `TESTING.md`. This report does not establish complete production coverage.
 
 The prototype includes the smaller phase 3 management improvements: scene summary, missing-assignment filter, automatic refresh, and variant listing. Their inclusion does not imply completed Foundry acceptance. Phase 4 remains deferred.
 
