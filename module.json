@@ -10,5 +10,8 @@
     "requires": [{"id": "autoanimations", "type": "module", "compatibility": {"minimum": "7.0.0", "maximum": "7.999.999"}}, {"id": "sequencer", "type": "module"}]
   },
   "esmodules": ["scripts/main.js"],
-  "styles": ["styles/manager.css"]
+  "styles": ["styles/manager.css"],
+  "url": "https://github.com/tops-v7/Animation-Helper",
+  "manifest": "https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/module.json",
+  "download": "https://github.com/tops-v7/Animation-Helper/archive/refs/tags/v0.1.0.zip"
 }

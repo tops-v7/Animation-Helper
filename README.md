@@ -15,7 +15,15 @@ Alternativ über die Konsole bzw. ein Script-Makro:
 game.modules.get("pf2e-scene-animation-manager").api.open();
 ```
 
-Ein frei belegbares Tastenkürzel steht in den Foundry-Einstellungen bereit. Noch keine Manifest-URL-Installation: Es wurde kein GitHub-Release veröffentlicht. Für spätere Releases `url`, `manifest` und `download` im Manifest ergänzen, sobald die tatsächlichen Release-Adressen existieren.
+Ein frei belegbares Tastenkürzel steht in den Foundry-Einstellungen bereit.
+
+Alternativ in Foundry unter **Add-on Modules → Install Module → Manifest URL** diese Adresse eintragen:
+
+```text
+https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/module.json
+```
+
+Das Manifest lädt das versionierte GitHub-Quellarchiv des Tags `v0.1.0`. Das Modul benötigt keinen JavaScript-Build und keine `node_modules` im Foundry-Client. Für neue Versionen Manifestversion und Download-Tag gemeinsam aktualisieren.
 
 ## Voraussetzungen und Prüfstand
 
