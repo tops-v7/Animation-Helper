@@ -1,0 +1,24 @@
+.pf2e-sam .window-content { overflow: auto; }
+.pf2e-sam .sam-body { display: flex; flex-direction: column; gap: 12px; padding: 12px; min-width: 520px; }
+.pf2e-sam .sam-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.pf2e-sam h2, .pf2e-sam h3, .pf2e-sam p { margin: 0 0 6px; }
+.pf2e-sam label { display: flex; gap: 6px; flex-direction: column; flex: 1; }
+.pf2e-sam .sam-filters { display: flex; gap: 10px; }
+.pf2e-sam .sam-columns { display: grid; grid-template-columns: minmax(260px, 3fr) minmax(220px, 2fr); gap: 18px; }
+.pf2e-sam .sam-table-scroll { max-height: 160px; overflow: auto; }
+.pf2e-sam table { margin: 6px 0; width: 100%; }
+.pf2e-sam th, .pf2e-sam td { padding: 5px; text-align: left; }
+.pf2e-sam td:not(:first-child) { text-align: center; }
+.pf2e-sam .sam-abilities { list-style: none; padding: 0; margin: 0; max-height: 360px; overflow: auto; }
+.pf2e-sam .sam-abilities button { width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px; height: auto; }
+.pf2e-sam .sam-abilities button[aria-pressed=true] { outline: 2px solid var(--color-border-highlight, #c68b40); outline-offset: -2px; }
+.pf2e-sam small { display: block; font-size: .8em; opacity: .75; }
+.pf2e-sam .sam-status { font-size: .85em; border: 1px solid currentColor; border-radius: 5px; padding: 3px 7px; white-space: nowrap; }
+.pf2e-sam .sam-status.item, .pf2e-sam .sam-status.autorec { color: var(--color-text-primary, inherit); border-color: #4f9763; }
+.pf2e-sam .sam-status.missing { border-color: #cf6e45; }
+.pf2e-sam .sam-status.disabled { border-style: dashed; }
+.pf2e-sam .sam-status.unknown { border-color: #b99335; }
+.pf2e-sam .sam-detail { display: flex; flex-direction: column; align-items: stretch; gap: 10px; overflow-wrap: anywhere; }
+.pf2e-sam .sam-detail .sam-status { align-self: start; }
+.pf2e-sam .sam-hint { font-size: .85em; opacity: .8; }
+.pf2e-sam [role=alert] { border-left: 3px solid #cf6e45; padding-left: 10px; }
