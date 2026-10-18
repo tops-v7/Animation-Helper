@@ -1,15 +1,16 @@
 {
   "id": "pf2e-scene-animation-manager",
   "title": "Animation Helper",
-  "description": "A GM scene overview and Automated Animations configuration manager for Pathfinder Second Edition.",
-  "version": "0.1.1",
+  "description": "<p><strong>Animation Helper</strong> gives GMs a central, scene-based overview of Automated Animations configuration for Pathfinder Second Edition.</p><ul><li>Browse PC and NPC spells, attacks, actions, and active feats.</li><li>Search and filter item overrides, global Autorec matches, disabled entries, and missing animations.</li><li>Open AA's existing item editor or global Autorec menu directly.</li><li>Group linked actors while keeping unlinked token actors separate.</li></ul><p><strong>Compatibility:</strong> Foundry VTT 14 (build 361 or later), PF2e 8.6.1+, and Automated Animations 7.1.8–7.x. Sequencer is required; AA also requires socketlib. JB2A Free or Patreon assets are optional for management and needed only when the selected animations use them.</p><p>GM-only, English interface. No animation renderer, live preview, or separate assignment database. Variant editing opens the base spell; temporary spells are read-only. Foundry runtime acceptance is still pending.</p><p><a href=\"https://github.com/tops-v7/Animation-Helper#readme\">Setup and usage</a> · <a href=\"https://github.com/tops-v7/Animation-Helper/issues\">Report an issue</a> · <a href=\"https://github.com/tops-v7/Animation-Helper/blob/main/CHANGELOG.md\">Changelog</a></p>",
+  "version": "0.1.2",
   "authors": [
     {
-      "name": "Animation Helper contributors"
+      "name": "Animation Helper contributors",
+      "url": "https://github.com/tops-v7/Animation-Helper"
     }
   ],
   "compatibility": {
-    "minimum": "14",
+    "minimum": "14.361",
     "maximum": "14"
   },
   "relationships": {
@@ -19,7 +20,9 @@
         "type": "system",
         "compatibility": {
           "minimum": "8.6.1"
-        }
+        },
+        "manifest": "https://raw.githubusercontent.com/foundryvtt/pf2e/v14-dev/system.pf2e.json",
+        "reason": "Uses PF2e actor items, prepared strikes, spellcasting collections, and spell variants."
       }
     ],
     "requires": [
@@ -27,13 +30,17 @@
         "id": "autoanimations",
         "type": "module",
         "compatibility": {
-          "minimum": "7.0.0",
+          "minimum": "7.1.8",
           "maximum": "7.999.999"
-        }
+        },
+        "manifest": "https://github.com/theripper93/autoanimations/releases/latest/download/module.json",
+        "reason": "Provides item animation configuration, global Autorec assignments, and the original editor."
       },
       {
         "id": "sequencer",
-        "type": "module"
+        "type": "module",
+        "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/module.json",
+        "reason": "Required by Automated Animations for its animation workflow."
       }
     ]
   },
@@ -45,5 +52,9 @@
   ],
   "url": "https://github.com/tops-v7/Animation-Helper",
   "manifest": "https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/module.json",
-  "download": "https://github.com/tops-v7/Animation-Helper/archive/refs/tags/v0.1.1.zip"
+  "download": "https://github.com/tops-v7/Animation-Helper/archive/refs/tags/v0.1.2.zip",
+  "readme": "https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/README.md",
+  "bugs": "https://github.com/tops-v7/Animation-Helper/issues",
+  "changelog": "https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/CHANGELOG.md",
+  "license": "https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/LICENSE"
 }

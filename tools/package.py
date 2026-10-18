@@ -6,7 +6,7 @@ from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 root = Path(__file__).resolve().parent.parent
 manifest = json.loads((root / "module.json").read_text())
 module_id = manifest["id"]
-files = [root / "module.json", root / "README.md", root / "LICENSE"]
+files = [root / "module.json", root / "README.md", root / "LICENSE", root / "CHANGELOG.md"]
 for folder in ["scripts", "styles", "docs"]:
     files.extend(p for p in (root / folder).rglob("*") if p.is_file())
 for entry in manifest["esmodules"] + manifest["styles"]:
