@@ -1,77 +1,82 @@
-# PF2e Scene Animation Manager
+# Animation Helper
 
-Eigenständiger, installierbarer Prototyp **0.1.0** für Foundry VTT 14 und PF2e. Der GM verwaltet vorhandene Automated-Animations-Zuordnungen zentral für die geöffnete Canvas-Szene. Kein Fork, kein Renderer und keine eigene Konfigurationsdatenbank.
+An installable **0.1.1 prototype** for Foundry VTT 14 and Pathfinder Second Edition. Animation Helper gives the GM a central overview of Automated Animations assignments for the current canvas scene. It uses AA's existing configuration and editor without maintaining a separate assignment database or rendering animations itself.
 
 ## Installation
 
-1. Das ZIP `dist/pf2e-scene-animation-manager-0.1.0.zip` herunterladen oder mit `npm run build` erzeugen.
-2. ZIP in das Foundry-UserData-Verzeichnis `Data/modules/` entpacken. Die Datei muss anschließend unter `Data/modules/pf2e-scene-animation-manager/module.json` liegen.
-3. Foundry neu starten. In einer separaten PF2e-Testwelt Automated Animations, dessen Abhängigkeiten (Sequencer und socketlib) und dieses Modul aktivieren. Für Wiedergabe passende JB2A-Assets installieren.
-4. Als GM eine Szene öffnen und in den Token-Werkzeugen den Zauberstab-Button **Scene Animation Manager** anklicken.
-
-Alternativ über die Konsole bzw. ein Script-Makro:
-
-```js
-game.modules.get("pf2e-scene-animation-manager").api.open();
-```
-
-Ein frei belegbares Tastenkürzel steht in den Foundry-Einstellungen bereit.
-
-Alternativ in Foundry unter **Add-on Modules → Install Module → Manifest URL** diese Adresse eintragen:
+In Foundry, open **Add-on Modules → Install Module → Manifest URL** and enter:
 
 ```text
 https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/module.json
 ```
 
-Das Manifest lädt das versionierte GitHub-Quellarchiv des Tags `v0.1.0`. Das Modul benötigt keinen JavaScript-Build und keine `node_modules` im Foundry-Client. Für neue Versionen Manifestversion und Download-Tag gemeinsam aktualisieren.
+The manifest downloads the versioned GitHub source archive for tag `v0.1.1`. No JavaScript build or `node_modules` installation is required in Foundry.
 
-## Voraussetzungen und Prüfstand
+For manual installation:
 
-- Foundry VTT **14**, PF2e **ab 8.6.1** laut Modulmanifest.
-- AA **7.x**; untersucht wurden Release **7.1.8** und dessen Quellen.
-- Sequencer aktiviert; aktuelles untersuchtes Release **4.3.0**.
-- JB2A-Version und tatsächlich verfügbare Assets hängen von der lokalen Installation ab. Der Manager benötigt selbst keine Assets und prüft deren Abspielbarkeit nicht.
-- Oberfläche nur für GMs. Es werden keine Zugangsdaten oder Serverdienste benötigt.
+1. Build the ZIP with `npm run build`: `dist/pf2e-scene-animation-manager-0.1.1.zip`.
+2. Extract it into your Foundry user data directory, under `Data/modules/`. The manifest must be at `Data/modules/pf2e-scene-animation-manager/module.json`.
+3. Restart Foundry. In a separate PF2e test world, enable Automated Animations, its dependencies (Sequencer and socketlib), and **Animation Helper**. Install suitable JB2A assets for playback.
+4. Open a scene as GM and click the wand button labeled **Animation Helper** in the token tools.
 
-**Noch nicht in einer laufenden Foundry-14-Testwelt validiert.** Die Cloud enthält keine lizenzierte Foundry-Runtime und keine Kampagnendaten. Manifest-Kompatibilität ist deklariert, nicht als durchgeführter Laufzeittest zu verstehen; `verified` wurde deshalb nicht gesetzt. Quellcodeanalyse, automatisierte Daten-/Adaptertests und DOM-Interaktionstests sind durchgeführt. Den manuellen [Testplan](docs/TESTING.md) vor Einsatz in einer Kampagne ausführen.
+You can also open the window from the console or a script macro:
 
-## Bedienung und Funktionen
+```js
+game.modules.get("pf2e-scene-animation-manager").api.open();
+```
 
-- Aktuelle Canvas-Szene mit PC-/NPC-Anzahl und Übersicht pro Actor.
-- Linked Tokens desselben Actors zusammengefasst, einschließlich Tokenanzahl. Unlinked Tokens bleiben getrennt und verwenden ihren jeweiligen synthetischen Actor.
-- Actor-Auswahl, Suche nach Name/Zaubereintrag, Filter für Zauber, Angriffe und Aktionen sowie Animationsstatus.
-- Waffen, NPC-Nah-/Fernkampfangriffe (`melee`), Aktionen, Reaktionen, freie Aktionen und aktivierbare Feats. Passive Feats, Effekte und Conditions werden nicht als ausführbare Fähigkeiten gezählt.
-- Zauber aus Actor-Items und vorbereiteten Spellcasting-Sammlungen, inklusive Fokuszaubern, zugänglichen dynamischen Zaubern und eingebetteten Verbrauchsgegenstand-Zaubern.
-- Vorhandene Override-Spell-Varianten werden zusätzlich angezeigt. Unterschiedliche Zaubergrade werden nicht vollständig ausmultipliziert.
-- **AA-Konfiguration öffnen** ruft den originalen AA-Editor für das persistierte Actor-Item auf. Bei Varianten ist der Button ausdrücklich mit **Basiszauber** beschriftet.
-- **Globales AA-Autorec öffnen** öffnet AAs vorhandene globale Verwaltung. Keine eigene Speicherung oder Synchronisierung von Zuordnungen.
-- Aktualisierung nach Actor-, Item-, Token-, Szenen- und AA-Setting-Änderungen sowie nach dem Schließen von Editoren; Ereignisse werden gebündelt. Such- und Filterzustand bleiben erhalten.
+A configurable keyboard shortcut is available in Foundry's settings. The technical module ID remains `pf2e-scene-animation-manager` so existing installations, settings, and API calls remain compatible. The displayed name is **Animation Helper**.
 
-| Status | Bedeutung |
+For future releases, update the manifest version and download tag together. The manifest URL remains unchanged.
+
+## Requirements and validation status
+
+- Foundry VTT **14** and PF2e **8.6.1 or later**, as declared in the module manifest.
+- Automated Animations **7.x**; the integration was investigated against release **7.1.8** and its source.
+- Sequencer enabled; the investigated release is **4.3.0**.
+- Available JB2A assets depend on your installation. Animation Helper needs no assets for configuration management and does not verify playback.
+- GM access only. No credentials or separate server services are required.
+
+**Not yet validated in a running Foundry 14 test world.** The cloud environment contains no licensed Foundry runtime or campaign data. Manifest compatibility is declared rather than demonstrated by a runtime acceptance test, so `verified` is intentionally unset. Source analysis, automated data/adapter tests, and DOM interaction tests have been completed. Follow the manual [test plan](docs/TESTING.md) before using the module in a campaign.
+
+## Features and usage
+
+- Current canvas scene with PC/NPC counts and a per-actor summary.
+- Linked tokens sharing an actor are grouped, with a token count. Unlinked tokens remain separate and use their own synthetic actors.
+- Actor selection, search by ability or spellcasting entry name, category filters, and animation status filters.
+- Weapons, NPC melee/ranged attacks (`melee` items), actions, reactions, free actions, and active feats. Passive feats, effects, and conditions are excluded from the ability list.
+- Spells from actor items and prepared spellcasting collections, including focus spells, accessible dynamic spells, and spells embedded in consumables.
+- Existing override spell variants appear as additional entries. The list does not expand every possible spell rank.
+- **Open AA configuration** opens AA's original editor for the persistent actor item. For variants, the button explicitly says **base spell**.
+- **Open global AA Autorec** opens AA's existing global configuration. Assignments are neither copied nor synchronized into a separate store.
+- Automatic refresh after actor, item, token, canvas, and AA setting changes, and after editors close. Events are batched; search and filters are preserved.
+
+| Status | Meaning |
 | --- | --- |
-| Item-Override | Aktuelle AA-Flags mit `isCustomized` und bekannter Kategorie |
-| Autorec | Treffer nach AAs Namens-, Kategorien- und Fallbackregeln |
-| Deaktiviert | Am Item deaktiviert oder globale automatische Erkennung abgeschaltet |
-| Fehlend | Kein passender Override oder Autorec-Eintrag |
-| Ungeklärt | Abhängigkeiten/Daten fehlen, ältere Flags oder ungültige Konfiguration |
+| Item override | Current AA flags with `isCustomized` and a recognized category |
+| Autorec | A match using AA's naming, category, and fallback rules |
+| Disabled | Disabled on the item, or global automatic recognition is turned off |
+| Missing | No matching override or Autorec entry |
+| Unknown | Missing dependencies/data, older flags, or invalid configuration |
 
-„Fehlende Animationen“ zeigt ausschließlich **Fehlend**, nicht deaktivierte oder ungeklärte Einträge. Konfiguriert = Item-Override + Autorec. Varianten zählen als eigene Zeilen. Die Zuordnungsprüfung garantiert keine Wiedergabe: Rollkontext, Assets, Trefferbedingungen, Ammo-Overrides, Sequencer und AA-Laufzeitfehler können das Ergebnis beeinflussen.
+**Missing animations** includes only **Missing** entries. Configured = Item override + Autorec. Variants count as separate rows. Assignment detection does not guarantee playback: roll context, assets, hit conditions, ammunition overrides, Sequencer, and AA runtime errors can affect the result.
 
-## Datensicherheit und Grenzen
+## Data safety and limitations
 
-Die Übersicht schreibt keine Actor-, Token-, Item- oder AA-Daten und führt keine AA-Migrationen aus. Erst der bewusst geöffnete originale AA-Editor kann seine üblichen Flag-Migrationen und gespeicherten Änderungen vornehmen. Bestehende Zuordnungen werden nicht überschrieben, importiert oder automatisch migriert.
+The overview does not write actor, token, item, or AA data and does not run AA migrations. Opening the original AA editor deliberately allows that editor to perform its normal flag migrations and save your changes. Scanning does not overwrite, import, or migrate existing assignments.
 
-- Varianten bearbeiten in Version 0.1.0 bewusst den Basiszauber. Keine Zusage unabhängiger Varianten-Overrides (AA-Issue #74).
-- Temporäre, generierte und in Verbrauchsgegenständen eingebettete Zauber sind lesbar, aber ohne nachgewiesen sichere Persistenz nicht direkt editierbar. Dafür Autorec verwenden. Neue Fähigkeiten eines anderen Moduls erscheinen nur, wenn sie als Items, Strike-Items oder zugängliche Spellcasting-Collections vorliegen.
-- Dailies-/Stab-Zauber können trotz Zuordnung in AA nicht auslösen (Issue #84). Der Manager behebt keine Playback-Hooks.
-- Region-Lebenszyklen und Sequencer-Elevation werden nicht verändert (Issues #82/#85).
-- Alte AA-Flags werden als **Ungeklärt** angezeigt; den AA-Editor zur Prüfung/Migration öffnen. Fehlerhafte globale Daten führen nicht zu einer falschen „Fehlend“-Anzeige.
-- Nicht englische Namen benötigen passende Autorec-Einträge. Es wird genau AAs Namenslogik verwendet, keine eigene Übersetzung von Zaubern.
-- Die UI ist zunächst deutsch. Große Szenen werden synchron projiziert; bei sehr großen Itemmengen ist weitere Profilierung sinnvoll.
+- Variant editing deliberately opens the base spell. Independent variant overrides are not supported (AA issue #74).
+- Temporary, generated, and consumable-embedded spells are readable, but cannot be edited directly without a proven safe persistence path. Use Autorec instead. Abilities supplied by other modules appear only when exposed as items, strike items, or accessible spellcasting collections.
+- Dailies/staff spells may fail to trigger AA despite having an assignment (issue #84). Animation Helper does not modify playback hooks.
+- Region lifecycles and Sequencer elevation are unchanged (issues #82/#85).
+- Older AA flags are shown as **Unknown**. Open the AA editor to review or migrate them. Invalid global data is not reported as a missing assignment.
+- Non-English ability names still require matching Autorec entries. The manager follows AA's naming rules and does not translate campaign content.
+- All module-provided interface text and documentation are in English. Actor names, item names, and localized PF2e labels retain their existing language.
+- Scene data is projected synchronously; very large scenes may benefit from additional profiling.
 
-## Entwicklung
+## Development
 
-Node.js >=22 und Python 3 sind ausreichend. Das Modul selbst hat keine gebündelten Laufzeitabhängigkeiten und benötigt keinen JavaScript-Build. `linkedom` ist nur eine Entwicklungsabhängigkeit für DOM-Tests.
+Node.js >=22 and Python 3 are sufficient. The module has no bundled runtime dependencies and needs no JavaScript build. `linkedom` is a development dependency used for DOM tests.
 
 ```sh
 cd /workspace/Animation-Helper
@@ -80,15 +85,15 @@ npm test
 npm run build
 ```
 
-Die Cloud-Aufgabe ist bereits isoliert: vorhandenen Checkout verwenden, keinen zusätzlichen Git-Worktree erstellen.
+Cloud tasks are already isolated: use the existing checkout and do not create another Git worktree unless explicitly requested.
 
-Optionaler Vergleich mit dem tatsächlichen AA-Quellcode (kein Foundry-Ersatz):
+Optional comparison against actual AA source, without running Foundry:
 
 ```sh
 git clone --depth 1 --branch 7.1.8 https://github.com/theripper93/autoanimations.git /tmp/aa-reference
 node tools/verify-aa.mjs /tmp/aa-reference
 ```
 
-Der Vergleich führt den originalen AA-Resolver und seine Header-Registrierung in einem kontrollierten Node-Kontext aus; Migrationen und Editor-Rendering sind dabei ersetzt. Das originale Editor-Callback wird mit dem unveränderten Item aufgerufen. AA selbst muss zum Paketbau nicht installiert oder gebaut werden.
+This comparison runs AA's original resolver and header registration in a controlled Node context, with migrations and editor rendering substituted. The original editor callback receives the unchanged item document. Building AA is not required to package Animation Helper.
 
-Architektur, Quellenbelege und Erweiterungsplan: [Technischer Bericht](docs/TECHNICAL-ANALYSIS.md). Künftige Änderungen am AA-Editor-Control oder Resolver werden ausschließlich in `scripts/aa-adapter.js` angepasst. Direkte Editorintegration, Batchbearbeitung und individuelle Variantenpersistenz sind spätere Erweiterungen.
+See the [technical report and implementation plan](docs/TECHNICAL-ANALYSIS.md) for architecture and source references. Changes to AA editor controls or resolution rules belong in `scripts/aa-adapter.js`. Inline editing, batch operations, and independent variant persistence are future extensions.

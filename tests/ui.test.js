@@ -66,7 +66,7 @@ test("manager renders scene data, escapes names, handles filters, editor and cle
   content.querySelector('[data-actor="Token.npc"]').click();
   await new Promise(resolve => setImmediate(resolve));
   assert.equal(app.actorKey, "Token.npc");
-  assert.match(content.textContent, /Keine passenden Fähigkeiten/);
+  assert.match(content.textContent, /No matching abilities/);
   assert.ok(listeners.size > 0);
   app._onClose();
   assert.equal(listeners.size, 0);

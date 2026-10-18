@@ -33,14 +33,14 @@ export function actorAbilities(actor) {
     if (rows.has(rowKey)) return;
     const canEdit = persisted.has(editItem) && !editItem.isVariant && !editItem.parentItem;
     rows.set(rowKey, {key: rowKey, item, editItem: canEdit ? editItem : null,
-      name: item.name, category, source, note: note || (canEdit ? "" : "Temporäres Item: nur Statusanzeige; keine sichere dauerhafte Speicherung.")});
+      name: item.name, category, source, note: note || (canEdit ? "" : "Temporary item: status only; safe persistent editing is not available.")});
     if (type === "spell" && !item.isVariant) {
       try {
         for (const variant of item.overlays?.overrideVariants ?? []) {
           add(variant, {key: `${rowKey}:variant:${variant.variantId}`, editItem: item,
-            source: `${source} · Variante`, note: "AA-Editor bearbeitet den Basiszauber. Variantenstatus wird separat ermittelt."});
+            source: `${source} · Variant`, note: "The AA editor edits the base spell. Variant status is checked separately."});
         }
-      } catch (error) { warnings.push(`Varianten von ${item.name}: ${error.message}`); }
+      } catch (error) { warnings.push(`Variants of ${item.name}: ${error.message}`); }
     }
   };
   for (const item of persisted) {
@@ -49,17 +49,17 @@ export function actorAbilities(actor) {
     if (item.type === "consumable") {
       try {
         if (item.embeddedSpell) add(item.embeddedSpell, {key: `${item.uuid}:embeddedSpell`, editItem: null,
-          source: item.name, note: "Eingebetteter Verbrauchsgegenstand-Zauber: nur Statusanzeige; Autorec verwenden."});
+          source: item.name, note: "Embedded consumable spell: status only; use Autorec."});
       } catch (error) { warnings.push(`${item.name}: ${error.message}`); }
     }
   }
   // Prepared spell collections also include accessible module-generated lists (e.g. staves).
   for (const collection of values(actor.spellcasting?.collections)) {
-    for (const spell of values(collection)) add(spell, {source: collection.entry?.name ?? "Zaubersammlung"});
+    for (const spell of values(collection)) add(spell, {source: collection.entry?.name ?? "Spell collection"});
   }
   for (const strike of actor.system?.actions ?? []) {
     if (!strike.item) continue;
-    add(strike.item, {source: "Vorbereiteter Angriff"});
+    add(strike.item, {source: "Prepared strike"});
   }
   return {abilities: [...rows.values()].sort((a, b) => a.name.localeCompare(b.name)), warnings};
 }

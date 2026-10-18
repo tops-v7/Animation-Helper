@@ -1,6 +1,6 @@
 {
-  "name": "pf2e-scene-animation-manager",
-  "version": "0.1.0",
+  "name": "animation-helper",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "engines": {

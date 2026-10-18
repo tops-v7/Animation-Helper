@@ -59,7 +59,7 @@ test("malformed or unavailable global data remains unknown, never missing", () =
   const adapter = setup({range: [{label: 4}]});
   assert.equal(adapter.status(spell("Fireball")).kind, "unknown");
   adapter.game.modules.get("autoanimations").version = "8.0.0";
-  assert.match(adapter.check(), /nur AA 7/);
+  assert.match(adapter.check(), /only supports AA 7/);
 });
 test("original AA V2 control is invoked with actual sheet and item", async () => {
   const adapter = setup();
@@ -75,7 +75,7 @@ test("original AA V2 control is invoked with actual sheet and item", async () =>
   await adapter.openEditor(item);
   assert.equal(opened, 1);
   item.isVariant = true;
-  await assert.rejects(adapter.openEditor(item), /sicher bearbeitbares/);
+  await assert.rejects(adapter.openEditor(item), /safely editable/);
 });
 test("legacy control fallback and missing control error", async () => {
   const adapter = setup();
@@ -88,7 +88,7 @@ test("legacy control fallback and missing control error", async () => {
   await adapter.openEditor(item);
   assert.equal(opened, true);
   adapter.hooks.callAll = () => {};
-  await assert.rejects(adapter.openEditor(item), /nicht gefunden/);
+  await assert.rejects(adapter.openEditor(item), /not found/);
 });
 test("GM and dependency checks gate all entry points", async () => {
   const adapter = setup();

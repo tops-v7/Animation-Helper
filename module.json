@@ -1,17 +1,49 @@
 {
   "id": "pf2e-scene-animation-manager",
-  "title": "PF2e Scene Animation Manager",
-  "description": "GM scene overview and Automated Animations configuration access for PF2e.",
-  "version": "0.1.0",
-  "authors": [{"name": "Animation Helper contributors"}],
-  "compatibility": {"minimum": "14", "maximum": "14"},
-  "relationships": {
-    "systems": [{"id": "pf2e", "type": "system", "compatibility": {"minimum": "8.6.1"}}],
-    "requires": [{"id": "autoanimations", "type": "module", "compatibility": {"minimum": "7.0.0", "maximum": "7.999.999"}}, {"id": "sequencer", "type": "module"}]
+  "title": "Animation Helper",
+  "description": "A GM scene overview and Automated Animations configuration manager for Pathfinder Second Edition.",
+  "version": "0.1.1",
+  "authors": [
+    {
+      "name": "Animation Helper contributors"
+    }
+  ],
+  "compatibility": {
+    "minimum": "14",
+    "maximum": "14"
   },
-  "esmodules": ["scripts/main.js"],
-  "styles": ["styles/manager.css"],
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "8.6.1"
+        }
+      }
+    ],
+    "requires": [
+      {
+        "id": "autoanimations",
+        "type": "module",
+        "compatibility": {
+          "minimum": "7.0.0",
+          "maximum": "7.999.999"
+        }
+      },
+      {
+        "id": "sequencer",
+        "type": "module"
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/manager.css"
+  ],
   "url": "https://github.com/tops-v7/Animation-Helper",
   "manifest": "https://raw.githubusercontent.com/tops-v7/Animation-Helper/main/module.json",
-  "download": "https://github.com/tops-v7/Animation-Helper/archive/refs/tags/v0.1.0.zip"
+  "download": "https://github.com/tops-v7/Animation-Helper/archive/refs/tags/v0.1.1.zip"
 }

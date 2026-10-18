@@ -1,34 +1,35 @@
-# Prüfung
+# Testing Animation Helper
 
-## Automatisiert
+## Automated checks
 
-`npm test` prüft mit Node und einem DOM-Harness:
+`npm test` uses Node and a DOM harness to verify:
 
-- Linked-Deduplizierung, getrennte unlinked Tokens und fehlende Actors.
-- PF2e-Itemtypen, aktive Feats, dynamische Spellcasting-Sammlungen, eingebettete Zauber und Varianten.
-- Item-Override, Autorec, Deaktivierung, alte/ungültige Daten, exakte und partielle Suche, Ausschlussbegriffe, Waffen-Fallbacks und Template-Sonderfall.
-- Originales V2-Control, Legacy-Fallback, verweigerte Bearbeitung temporärer Items und GM-Sperre.
-- Tatsächliche DOM-Ausgabe, Escaping von Actor-Namen, Filterinteraktion, Editorübergabe, automatische Aktualisierung und Hook-Aufräumen.
+- Linked actor deduplication, separate unlinked tokens, and missing actors.
+- PF2e item types, active feats, dynamic spellcasting collections, embedded spells, and variants.
+- Item overrides, Autorec, disabling, old/invalid data, exact and partial matching, excluded terms, weapon fallbacks, and template handling.
+- Original V2 controls, legacy fallback, refusal to edit temporary items, and GM access checks.
+- DOM output, actor-name escaping, filter interaction, editor handoff, automatic refresh, and hook cleanup.
 
-`node tools/verify-aa.mjs /tmp/aa-reference` vergleicht zusätzlich den Adapter mit dem originalen AA-Resolver. Er führt keinen Foundry-Client und keinen echten Svelte-Editor aus.
+`node tools/verify-aa.mjs /tmp/aa-reference` additionally compares the adapter against AA's original resolver. It does not run a Foundry client or the actual Svelte editor.
 
-`npm run build` prüft alle Manifest-Dateiverweise, erzeugt ein reproduzierbares ZIP und prüft dessen CRC und enthaltenes Manifest.
+`npm run build` checks manifest file references, produces a reproducible ZIP, and verifies its CRC and bundled manifest.
 
-## Manueller Abnahmetest in Foundry 14 — noch offen
+## Manual Foundry 14 acceptance test — pending
 
-Eine separate Testwelt verwenden und vorher sichern. Versionen sowie Testergebnis protokollieren. Keine produktive Kampagne zum erstmaligen Test verwenden.
+Use a separate test world and back it up first. Record installed versions and test results. Do not use a production campaign for the first acceptance run.
 
-1. PF2e 8.6.1, AA 7.1.8, Sequencer 4.3.0, socketlib und vorhandene JB2A-Assets aktivieren. Browserkonsole auf Fehler prüfen.
-2. Szene mit PC, zwei linked Tokens desselben PCs, zwei unlinked Goblins, NPC mit `melee`-Angriffen und einem Token ohne Actor öffnen. Erwartung: PC einmal mit Anzahl, jeder unlinked Goblin separat, fehlender Actor als Hinweis.
-3. Vorbereitete, spontane und Fokuszauber, Reaktion, freie Aktion, aktives und passives Feat hinzufügen. Spellcasting-Quellen und Kategorien prüfen. Passive Feats dürfen nicht auftauchen.
-4. Einen Zauber nur über Autorec zuordnen. Er muss als Autorec gelten und aus dem Fehlend-Filter verschwinden. Exakt/unscharf, ausgeschlossene Namen und lokalisierte Waffen-Gruppennamen prüfen.
-5. AA-Editor aus dem Manager öffnen. Am tatsächlichen Item einen Override speichern. Status muss ohne Neuöffnen auf Item-Override wechseln. Deaktivieren muss „Deaktiviert“ ergeben. Andere Items/Actors dürfen keine neuen Flags erhalten.
-6. Dasselbe für genau einen unlinked Goblin tun. Der andere Goblin und der World-Actor müssen unverändert bleiben.
-7. Globales Autorec aus dem Manager öffnen, Eintrag ändern/speichern. Zählwerte und Status müssen aktualisieren. Globales Autorec deaktivieren, Override muss weiter als Override gelten.
-8. Spell-Varianten hinzufügen: eigene Zeilen und Namens-Fallback prüfen. Editorbutton muss **Basiszauber** benennen und genau diesen öffnen. Keine unabhängige Variantenbearbeitung erwarten.
-9. Stäbe/Dailies und Schriftrolle/Zauberstab prüfen, soweit in der Testinstallation vorhanden. Temporäre Zauber müssen ohne direkten Editorbutton erscheinen; Autorec bleibt zugänglich. Playback-Probleme getrennt erfassen.
-10. Actor/Item/Token löschen, ändern und neu erstellen; Szene wechseln und Canvas schließen. Keine veralteten Editorziele, keine Fehler oder doppelten Hooks nach wiederholtem Öffnen/Schließen.
-11. Als Spieler anmelden. Kein Button; API-Aufruf öffnet keine Verwaltung. AA deaktivieren bzw. inkompatible Version simulieren: klare Fehlermeldung statt Schreibzugriff.
-12. Szenen mit vielen Tokens/Items auf Reaktionszeit prüfen. Suche/Filter und Auswahl müssen nach Updates erhalten bleiben, soweit Einträge noch vorhanden sind.
+1. Enable PF2e 8.6.1, AA 7.1.8, Sequencer 4.3.0, socketlib, and available JB2A assets. Check the browser console for errors. The module list, window title, token tool, and keyboard shortcut must use **Animation Helper**.
+2. Open a scene with a PC, two linked tokens for that PC, two unlinked goblins, an NPC with `melee` attacks, and a token without an actor. Expect one grouped PC with a count, separate unlinked goblins, and a missing-actor notice.
+3. Add prepared, spontaneous, and focus spells; a reaction; a free action; and active/passive feats. Check spellcasting sources and categories. Passive feats must not appear.
+4. Assign a spell through Autorec only. It must show **Autorec** and disappear from the **Missing animations** filter. Check exact/partial matches, excluded terms, and localized weapon group names.
+5. Open the AA editor from Animation Helper and save an override on the actual item. The status must change to **Item override** without reopening the manager. Disabling it must show **Disabled**. Other actors/items must receive no new flags.
+6. Repeat for exactly one unlinked goblin. The other goblin and the world actor must remain unchanged.
+7. Open global Autorec, change an entry, and save. Counts and status must refresh. Disable global Autorec; an item override must still count as an override.
+8. Add spell variants and check separate rows and base-name fallbacks. The editor button must explicitly say **base spell** and open that spell. Do not expect independent variant editing.
+9. Check staves/Dailies and scrolls/wands where available. Temporary spells must appear with the direct editor button disabled; Autorec must remain accessible. Record playback issues separately.
+10. Delete, change, and create actors/items/tokens; switch scenes; and close the canvas. There must be no stale editor targets, errors, or duplicate hooks after repeatedly opening and closing the manager.
+11. Log in as a player. No tool button should appear, and the API must not open the manager. Disable AA or simulate an incompatible version: expect a clear error instead of a write operation.
+12. Check responsiveness in scenes with many tokens/items. Search, filters, and selection should survive updates while the selected entries still exist.
+13. Check empty states, status explanations, error messages, variant notes, and search placeholders. All module-provided text must be in English. Campaign names and PF2e-localized content may retain their configured language.
 
-Animationswiedergabe ist kein Feature dieses Managers. Falls zusätzlich getestet, Zuordnungserkennung und tatsächliches Playback als getrennte Ergebnisse festhalten.
+Animation playback is outside the manager's functionality. If you test it separately, record assignment detection and actual playback as distinct results.
